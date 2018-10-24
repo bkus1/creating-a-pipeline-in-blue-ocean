@@ -29,8 +29,17 @@ pipeline {
       }
     }
     stage('Deliver') {
-      steps {
-        echo 'Deliver'
+      parallel {
+        stage('Deliver') {
+          steps {
+            echo 'Deliver'
+          }
+        }
+        stage('mail') {
+          steps {
+            echo 'mail'
+          }
+        }
       }
     }
   }
